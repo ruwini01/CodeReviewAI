@@ -1,4 +1,7 @@
-const API_BASE_URL = 'http://localhost:8080/api/code';
+// Get API URL from environment variable, fallback to localhost
+const API_BASE_URL = import.meta.env.VITE_API_URL 
+  ? `${import.meta.env.VITE_API_URL}/api/code`
+  : 'http://localhost:8080/api/code';
 
 export async function analyzeCode(request) {
   const response = await fetch(`${API_BASE_URL}/analyze`, {
