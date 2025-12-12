@@ -1,5 +1,9 @@
-# Ignore environment files
+__pycache__/
+*.py[cod]
+*$py.class
 .env
-
-# Ignore Python virtual environment
 .venv/
+venv/
+env/
+*.log
+.DS_Store
