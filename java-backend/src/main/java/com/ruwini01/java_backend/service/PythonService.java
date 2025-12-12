@@ -1,25 +1,31 @@
 package com.ruwini01.java_backend.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import lombok.RequiredArgsConstructor;
+
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class PythonService {
 
-    private final RestTemplate restTemplate = new RestTemplate();
-    private final String PYTHON_BASE_URL = "http://localhost:8000";
+    private final RestTemplate restTemplate;
+    
+    @Value("${python.api.url}")
+    private String pythonBaseUrl;
 
     public Object analyzeCode(String language, String code) {
-        String url = PYTHON_BASE_URL + "/api/analyze";
+        String url = pythonBaseUrl + "/api/analyze";
         return makeRequest(url, language, code);
     }
 
     public Object fixCode(String language, String code) {
-        String url = PYTHON_BASE_URL + "/api/fix";
+        String url = pythonBaseUrl + "/api/fix";
         return makeRequest(url, language, code);
     }
 

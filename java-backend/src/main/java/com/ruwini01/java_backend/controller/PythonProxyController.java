@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/code")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class PythonProxyController {
 
     private final PythonService pythonService;
@@ -38,7 +37,6 @@ public class PythonProxyController {
         }
     }
 
-    // Inner class for error responses
     @lombok.Data
     @lombok.AllArgsConstructor
     public static class ErrorResponse {
